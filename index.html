@@ -1,4 +1,67 @@
-<!DOCTYPE html>
+<script>
+        function openTab(evt, tabName) {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+            }
+            
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].className = tabs[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Handle URL hash on page load
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                var tab = window.location.hash.substring(1);
+                var tabElement = document.getElementById(tab);
+                if (tabElement) {
+                    var event = {
+                        currentTarget: document.querySelector('a[href="#' + tab + '"]')
+                    };
+                    openTab(event, tab);
+                }
+            }
+        });
+    </script>        <!-- Map Tab -->
+        <div id="map" class="tab-content">
+            <h2>Wine Regions</h2>
+            
+            <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto;">
+                <iframe src="https://www.google.com/maps/d/embed?mid=1JEyjIeIEhZWGCgUZ8O3a1xTuTRw0l9c&ehbc=2E312F" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            
+            <div class="wine-card" id="region-info">
+                <div class="section-title">Italy's Wine Regions</div>
+                <p>Use the interactive map above to explore each region. Click on markers to see details about each winery and region.</p>
+                
+                <div class="section-title">North</div>
+                <p><strong>Lombardy (Franciacorta)</strong>: Santa Lucia<br>
+                Italy's premier sparkling wine region near Lake Iseo, using traditional method like Champagne. Santa Lucia has 30 hectares of organically farmed vineyards.</p>
+                
+                <p><strong>Piedmont (Roero)</strong>: Malvirà<br>
+                Located across the Tanaro river from Barolo, Roero features sandy soils from ancient seabeds. Malvirà was established in 1950 and produces elegant Nebbiolo wines.</p>
+                
+                <p><strong>Piedmont (Barbaresco)</strong>: Rivetto<br>
+                One of Italy's most prestigious wine regions, Barbaresco produces elegant Nebbiolo wines that are often more approachable than neighboring Barolo. Rivetto sources from the historic Marcarini vineyard.</p>
+                
+                <div class="section-title">Central</div>
+                <p><strong>Tuscany (Montalcino)</strong>: Val di Suga<br>
+                Home to one of Italy's most celebrated wines, Brunello di Montalcino is made from 100% Sangiovese at elevations up to 1,800 feet. Val di Suga uniquely owns vineyards on all three major slopes of the hill.</p>
+                
+                <div class="section-title">South</div>
+                <p><strong>Campania (Avellino/Tufo)</strong>: Quintodecimo<br>
+                This mountainous region in southern Italy preserves ancient grape varieties like Fiano and Greco. Quintodecimo was founded in 2001 by Professor Luigi Moio, Italy's leading expert on wine aromas.</p>
+                
+                <div class="section-title">Islands</div>
+                <p><strong>Sicily (Mount Etna)</strong>: IDDA<br>
+                Europe's largest active volcano is becoming one of Italy's most exciting wine regions. IDDA is a collaboration between the Gaja and Graci families focusing on Carricante grown on volcanic soils at high elevation.</p>
+            </div>
+        </div><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -240,11 +303,14 @@
                     Lombardy | 90% Chardonnay, 10% Pinot Bianco
                 </div>
                 
-                <div class="section-title">Tasting Notes</div>
-                <p>Yellow with greenish nuances, fine bubbles. Aromatic floral nose with a soft, slightly savory palate and pleasantly bitter finish.</p>
+                <div class="section-title">In Your Glass</div>
+                <p>Think of a golden sunrise with tiny, persistent bubbles dancing to the top of your glass. You'll smell fresh-baked bread and spring flowers, then taste crisp green apple and a hint of citrus. The finish is clean with a subtle almond-like bitterness that makes you want another sip.</p>
                 
-                <div class="section-title">Producer</div>
-                <p>Family-owned winery founded in the 1990s with 30 hectares of organically managed vineyards across the Franciacorta region.</p>
+                <div class="section-title">About the Winery</div>
+                <p>The Villa family founded Santa Lucia in the late 1990s, transforming their deep knowledge of wine research into practice. Their 30 hectares of vineyards are farmed organically across the Franciacorta region. The winery itself is housed in a beautiful architectural complex around the historic Longhi Palace, built in the 17th century but with structures dating back to the 14th century.</p>
+                
+                <div class="section-title">Grape & Region Spotlight</div>
+                <p>Franciacorta is Italy's answer to Champagne, using the same traditional method where the second fermentation happens in the bottle. This creates those fine bubbles and complex flavors. Unlike Prosecco (which is tank-fermented), Franciacorta spends a minimum of 18 months aging on the lees, developing brioche and nutty notes. The region's unique glacial soils near Lake Iseo give the wines their distinctive mineral character.</p>
             </div>
         </div>
         
@@ -261,11 +327,14 @@
                     Campania (Avellino) | 100% Fiano
                 </div>
                 
-                <div class="section-title">Tasting Notes</div>
-                <p>Bright straw yellow. Complex aromas of linden, acacia, thyme, exotic fruits, and candied citrus. Elegant, powerful and balanced with a long mineral finish.</p>
+                <div class="section-title">In Your Glass</div>
+                <p>Imagine sunshine captured in a glass – bright straw yellow with glints of green. On the nose, it's like walking through a garden of lime blossoms and acacia flowers, with hints of sage and ripe tropical fruits. When you taste it, you'll find a wonderful balance of juicy stone fruit and vibrant freshness, with a mineral finish that lingers like a fine sea mist. This is an elegant wine that still packs a punch.</p>
                 
-                <div class="section-title">Producer</div>
-                <p>Established in 2001 by Professor Luigi Moio, who studied enology in Burgundy and specializes in Campanian varieties.</p>
+                <div class="section-title">About the Winery</div>
+                <p>Professor Luigi Moio isn't just a winemaker – he's considered Italy's leading expert on wine aromas. After studying in Burgundy with some of the world's best vintners, he returned to his native Campania and established Quintodecimo with his wife Laura in 2001. The name "Quintodecimo" comes from the ancient name of Mirabella Eclano, which was exactly 15 miles from ancient Benevento. Luigi approaches winemaking like a scientist and an artist, with meticulous attention to every detail.</p>
+                
+                <div class="section-title">Grape & Region Spotlight</div>
+                <p>Fiano is one of Italy's oldest grape varieties, dating back to Roman times when it was called "Vitis Apiana" (the vine beloved by bees) because bees were attracted to its sweet grapes. Today, it's experiencing a renaissance as one of southern Italy's most exciting white grapes. Grown in the hills of Irpinia at altitudes of nearly 600 meters, the cool nights and limestone-clay soils give Fiano its distinctive aromatic profile and structure. Unlike many Italian whites, quality examples like this can age beautifully for 5-10 years.</p>
             </div>
             
             <div class="wine-card white">
@@ -277,11 +346,14 @@
                     Campania (Tufo) | 100% Greco
                 </div>
                 
-                <div class="section-title">Tasting Notes</div>
-                <p>Golden yellow color reminiscent of Van Gogh's sunflowers. Aromas of quince, melon, apricot, cedar, and herbs. Structured like a red wine with remarkable balance.</p>
+                <div class="section-title">In Your Glass</div>
+                <p>The striking golden-yellow color is your first clue this is no ordinary white wine. It's like Vincent van Gogh's sunflowers in liquid form (hence the name "Giallo d'Arles" or "Yellow of Arles"). The aroma unfolds with layers of quince marmalade, ripe melon, fresh apricot, and lemon zest, with aromatic herbs adding complexity. Take a sip and you'll be surprised – it has the weight and structure of a light red wine, with a wonderful tension between richness and freshness. The finish seems to last forever, with mineral notes that keep you coming back for more.</p>
                 
-                <div class="section-title">Producer</div>
-                <p>"Giallo d'Arles" references Van Gogh's favorite yellow – fitting as Greco naturally has higher pigmentation than other white grapes.</p>
+                <div class="section-title">About the Winery</div>
+                <p>Same producer as above (Quintodecimo). For this wine, Luigi Moio sources grapes from a single vineyard called "Giallo d'Arles" in the Santa Lucia district of Tufo. The name pays homage to Van Gogh's favorite yellow color during his time in Arles, France – a fitting tribute since Greco naturally contains higher pigmentation than most white grapes.</p>
+                
+                <div class="section-title">Grape & Region Spotlight</div>
+                <p>Greco is thought to have Greek origins (hence the name) and has been grown in Campania for thousands of years. The variety thrives in the volcanic tuff soils around the town of Tufo, where sulfur deposits give the wines their distinctive mineral character. What makes Greco unusual among white grapes is its thick skins and naturally high tannin content, allowing it to produce whites with remarkable structure and aging potential. The best examples, like this one, are fermented and aged partially in oak to enhance their natural complexity.</p>
             </div>
             
             <div class="wine-card white">
@@ -293,11 +365,14 @@
                     Sicily (Mount Etna) | 100% Carricante
                 </div>
                 
-                <div class="section-title">Tasting Notes</div>
-                <p>Bright straw yellow. Pure minerality with citrus, herbs, mint and jasmine. Firm texture with vibrant acidity and a flinty finish.</p>
+                <div class="section-title">In Your Glass</div>
+                <p>Clear and bright as mountain spring water with pale gold reflections. The first whiff transports you to a Mediterranean hillside – lemon trees, wild herbs like thyme, and crushed volcanic stones. There's something invigorating about it, with mint and jasmine adding lift. When you sip, it's like biting into a perfectly ripe white peach while standing on a rocky beach – juicy fruit meets saline minerality. The vibrant acidity makes it incredibly refreshing despite its depth of flavor.</p>
                 
-                <div class="section-title">Producer</div>
-                <p>A collaboration between the Gaja (Piedmont) and Graci (Sicily) families. "IDDA" means "she" in Sicilian, referring to Mount Etna.</p>
+                <div class="section-title">About the Winery</div>
+                <p>IDDA represents a dream team collaboration between two legendary wine families. Angelo Gaja (whose family revolutionized Piedmont wine) partnered with Alberto Graci (a respected Etna producer) to explore the untapped potential of Mount Etna's southwestern slope. "IDDA" means "she" in Sicilian dialect – it's what locals call Mount Etna, which they view as a maternal yet sometimes temperamental presence. The project began in 2016 and represents Gaja's first venture outside northern Italy.</p>
+                
+                <div class="section-title">Grape & Region Spotlight</div>
+                <p>Carricante is Mount Etna's noble white grape, believed to have grown on the volcano's slopes for over a thousand years. While most Etna producers focus on Nerello Mascalese (red), Gaja and Graci are betting on Carricante's potential for greatness. Growing at altitudes of 600-800 meters on black volcanic soils, the grapes develop incredible aromatic complexity while maintaining razor-sharp acidity despite Sicily's warm climate. The constant breeze from both mountain and sea keeps the grapes healthy, while minerals from ancient lava flows give the wines their distinctive flinty character.</p>
             </div>
         </div>
         
@@ -314,11 +389,14 @@
                     Piedmont (Roero) | 100% Nebbiolo
                 </div>
                 
-                <div class="section-title">Tasting Notes</div>
-                <p>Ruby red with orange hues. Complex aromas of black fruit, chocolate, spices, and mint. Powerful with persistent flavors and distinctive spice and licorice notes.</p>
+                <div class="section-title">In Your Glass</div>
+                <p>This wine shows its age beautifully with a garnet core that fades to orange-brick at the rim. The bouquet is like opening a treasure chest – dried cherries and blackberries mingle with chocolate, baking spices, mint, and that distinctive "tar and roses" character that makes aged Nebbiolo so special. After 15+ years, it's silky on the palate with resolved tannins but still plenty of energy. Look for layers of flavor – sweet dried fruit, savory herbs, hints of licorice, and a subtle earthiness. The finish seems to evolve with each sip, leaving you contemplating the wine long after you've swallowed.</p>
                 
-                <div class="section-title">Producer</div>
-                <p>Established in 1950 by Giuseppe Damonte, now run by his sons. The vineyard was originally owned by their grandmother Margherita.</p>
+                <div class="section-title">About the Winery</div>
+                <p>The Malvirà story began in 1950 when Giuseppe Damonte recognized the potential of Roero's sandy soils when others overlooked them in favor of nearby Barolo and Barbaresco. Today, his sons Massimo and Roberto continue his vision, farming 42 hectares and crafting wines that highlight Roero's distinctive terroir. The Mombeltramo vineyard has special significance – it originally belonged to their maternal grandmother, Margherita Raimondo, and its calcareous soils produce Nebbiolo with distinctive elegance.</p>
+                
+                <div class="section-title">Grape & Region Spotlight</div>
+                <p>Nebbiolo is Piedmont's noble red grape, most famous in Barolo and Barbaresco, but expressing itself differently in Roero. The name comes from "nebbia" (fog) that blankets the region during harvest. It's a challenging grape – early to bud, late to ripen, and notoriously picky about where it's planted. Nebbiolo in Roero benefits from the region's ancient seabed soils, which include marine fossils and sandy sediments that create more approachable wines compared to the more structured versions from across the Tanaro river. This 2009 vintage shows how beautifully Nebbiolo can age, developing complex tertiary aromas while maintaining freshness.</p>
             </div>
             
             <div class="wine-card red">
@@ -330,11 +408,14 @@
                     Piedmont (Barbaresco) | 100% Nebbiolo
                 </div>
                 
-                <div class="section-title">Tasting Notes</div>
-                <p>Bright garnet red. Classic Nebbiolo aromas of red berries, roses, violets, and leather. Elegant structure with cherry, raspberry, cinnamon and thyme flavors.</p>
+                <div class="section-title">In Your Glass</div>
+                <p>Bright garnet red with that classic Nebbiolo transparency that lets light pass through. The nose is hauntingly beautiful – wild strawberries, crushed rose petals, forest floor after rain, and sweet kitchen spices. When you sip, the wine feels elegant but full of energy, with flavors of juicy Morello cherry, raspberry jam, cinnamon, and thyme. The tannins are fine-grained but present, wrapping around your palate with a gentle grip. The 2016 vintage is considered exceptional across Piedmont, giving this wine perfect balance between power and finesse.</p>
                 
-                <div class="section-title">Producer</div>
-                <p>Four generations of winemaking since the late 19th century. Enrico Rivetto pioneered biodynamic viticulture, becoming the first Demeter-certified producer in Barolo/Barbaresco.</p>
+                <div class="section-title">About the Winery</div>
+                <p>Enrico Rivetto is a fourth-generation winemaker whose family began producing wine in the Langhe in the late 19th century. While their estate is primarily in Serralunga d'Alba (Barolo), they source grapes for this Barbaresco from the historic Marcarini vineyard between Treiso and Barbaresco. Enrico has been a pioneer in sustainable viticulture, becoming the first producer in the Barolo and Barbaresco zones to achieve Demeter biodynamic certification. His unique approach includes removing the grape seeds during fermentation to create silkier tannins – an uncommon practice that contributes to this wine's elegant texture.</p>
+                
+                <div class="section-title">Grape & Region Spotlight</div>
+                <p>Barbaresco is often called the "Queen" to Barolo's "King" of Italian wines – both made from 100% Nebbiolo but with distinct personalities. Barbaresco's soils contain more limestone and less clay than nearby Barolo, and the region's proximity to the Tanaro river creates a slightly milder microclimate. These factors lead to wines that are typically more approachable in their youth while still capable of long aging. The Marcarini vineyard sits at around 350 meters elevation and is surrounded by other prestigious crus including Pajorè and Ferrere. The 2016 vintage provided perfect ripening conditions with warm days and cool nights, considered by many to be among the best of the decade.</p>
             </div>
             
             <div class="wine-card red">
@@ -346,11 +427,14 @@
                     Tuscany (Montalcino) | 100% Sangiovese
                 </div>
                 
-                <div class="section-title">Tasting Notes</div>
-                <p>Bright red with ruby highlights. Complex nose of ripe red fruit, orange, and balsamic notes. Well-structured with defined tannins and acidity. Persistent finish.</p>
+                <div class="section-title">In Your Glass</div>
+                <p>Clear, brilliant ruby red with hints of garnet beginning to appear. The aroma is classic Brunello – ripe red cherries, orange peel, dried herbs, and a distinctive balsamic note that's almost like sweet soy sauce. Take a sip and you'll find vibrant red fruit flavors balanced by fresh acidity and structured tannins that frame the wine without overwhelming it. This has that perfect Tuscan combination of power and elegance, with a persistent finish that brings in subtle tobacco and leather notes. The 2018 vintage was slightly cooler and more classically styled than recent warmer years.</p>
                 
-                <div class="section-title">Producer</div>
-                <p>Unique for owning vineyards on all three slopes best suited to top-quality Brunello production—northeastern, southeastern, and southwestern.</p>
+                <div class="section-title">About the Winery</div>
+                <p>Val di Suga's history began in 1969, but what makes them truly unique is their vineyard positioning. They're the only producer in Montalcino to own vineyards on all three major slopes of the denomination – northeastern (Vigna del Lago), southeastern (Poggio al Granchio), and southwestern (Vigna Spuntali). This allows them to create Brunellos with remarkable balance by blending grapes from these different microclimates. Their flagship Brunello combines fruit from all three slopes, creating a wine that showcases the classic character of the appellation.</p>
+                
+                <div class="section-title">Grape & Region Spotlight</div>
+                <p>Brunello di Montalcino is made from 100% Sangiovese, specifically a local clone called "Brunello" (meaning "little dark one"). Montalcino sits on a hill rising up to 1,800 feet, with vineyards planted at various elevations and exposures. These variations create different expressions – lower vineyards typically produce more powerful wines, while higher sites create more aromatic, fresher styles. Brunello requires a minimum of four years aging before release (including two years in wood), allowing the wine to develop its characteristic complex aromas. The 2018 vintage began with a rainy spring followed by a balanced summer, resulting in wines with vibrant acidity and elegant structure.</p>
             </div>
             
             <div class="wine-card red">
@@ -362,11 +446,14 @@
                     Tuscany (Montalcino - Southwest) | 100% Sangiovese
                 </div>
                 
-                <div class="section-title">Tasting Notes</div>
-                <p>Deep ruby-garnet. Ripe candied fruit, spices, tobacco, herbs, and cocoa. Luxuriant profile with creamy texture and supple tannins, balanced by mineral and iodine notes.</p>
+                <div class="section-title">In Your Glass</div>
+                <p>Deep ruby-garnet with impressive concentration. This is Brunello in its most exuberant form – aromas of perfectly ripe cherries, sometimes venturing into candied territory, woven with complex notes of Mediterranean herbs, tobacco, dark chocolate, and subtle woodsy spices. The palate is luxurious and mouth-coating, with velvety tannins and a generous structure that still maintains freshness. What makes this wine special is its distinctive savory quality – think sun-dried tomatoes and a hint of saltiness from the nearby sea influence. The finish goes on and on, with fruit and spice notes returning in waves.</p>
                 
-                <div class="section-title">Vineyard</div>
-                <p>15-hectare vineyard at 300m elevation with sandy, well-draining soils. Strong Mediterranean influence from the nearby Tyrrhenian Sea.</p>
+                <div class="section-title">About the Winery</div>
+                <p>Same producer as above (Val di Suga). Spuntali represents their southwestern vineyard that benefits from the warming influence of the Mediterranean. The name "Spuntali" refers to the characteristic spurs of land that jut out from the hills in this section of Montalcino. This single-vineyard Brunello showcases how terroir affects the same grape variety – compared to their classic Brunello, this wine shows more power and ripeness while still maintaining the elegance that defines the best examples from the region.</p>
+                
+                <div class="section-title">Grape & Region Spotlight</div>
+                <p>The Spuntali vineyard sits at 300 meters elevation near Sant'Angelo in Colle, a subzone known for producing some of Montalcino's most powerful Brunellos. The unique terroir includes sandy, well-draining soils derived from degraded Pietraforte stone, which forces the vines to dig deep for water and nutrients. This area is strongly influenced by the Tyrrhenian Sea just 30km away, creating warm days with excellent ventilation and a distinctly Mediterranean character. In the winery, Spuntali undergoes 20 days of fermentation and maceration in concrete tanks followed by 24 months in French oak, developing the wine's complexity while preserving its fruit character. The result is a wine that showcases Sangiovese's remarkable ability to reflect its specific growing site.</p>
             </div>
         </div>
         
@@ -400,14 +487,37 @@
         <div id="map" class="tab-content">
             <h2>Wine Regions</h2>
             
-            <div style="position: relative; width: 100%; max-width: 400px; margin: 0 auto;">
-                <img src="https://i.imgur.com/L2kDRlz.jpg" alt="Map of Italy" class="map">
+            <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto;">
+                <iframe src="https://www.google.com/maps/d/embed?mid=1JEyjIeIEhZWGCgUZ8O3a1xTuTRw0l9c&ehbc=2E312F" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            
+            <div class="wine-card" id="region-info">
+                <div class="section-title">Italy's Wine Regions</div>
+                <p>Use the interactive map above to explore each region. Click on markers to see details about each winery and region.</p>
                 
-                <div style="position: absolute; top: 22%; left: 48%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('SANTA LUCIA')"></div>
-                <div style="position: absolute; top: 27%; left: 35%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('MALVIRA')"></div>
-                <div style="position: absolute; top: 30%; left: 40%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('RIVETTO')"></div>
-                <div style="position: absolute; top: 42%; left: 48%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('VAL DI SUGA')"></div>
-                <div style="position: absolute; top: 56%; left: 60%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('QUINTODECIMO')"></div>
+                <div class="section-title">North</div>
+                <p><strong>Lombardy (Franciacorta)</strong>: Santa Lucia<br>
+                Italy's premier sparkling wine region near Lake Iseo, using traditional method like Champagne. Santa Lucia has 30 hectares of organically farmed vineyards.</p>
+                
+                <p><strong>Piedmont (Roero)</strong>: Malvirà<br>
+                Located across the Tanaro river from Barolo, Roero features sandy soils from ancient seabeds. Malvirà was established in 1950 and produces elegant Nebbiolo wines.</p>
+                
+                <p><strong>Piedmont (Barbaresco)</strong>: Rivetto<br>
+                One of Italy's most prestigious wine regions, Barbaresco produces elegant Nebbiolo wines that are often more approachable than neighboring Barolo. Rivetto sources from the historic Marcarini vineyard.</p>
+                
+                <div class="section-title">Central</div>
+                <p><strong>Tuscany (Montalcino)</strong>: Val di Suga<br>
+                Home to one of Italy's most celebrated wines, Brunello di Montalcino is made from 100% Sangiovese at elevations up to 1,800 feet. Val di Suga uniquely owns vineyards on all three major slopes of the hill.</p>
+                
+                <div class="section-title">South</div>
+                <p><strong>Campania (Avellino/Tufo)</strong>: Quintodecimo<br>
+                This mountainous region in southern Italy preserves ancient grape varieties like Fiano and Greco. Quintodecimo was founded in 2001 by Professor Luigi Moio, Italy's leading expert on wine aromas.</p>
+                
+                <div class="section-title">Islands</div>
+                <p><strong>Sicily (Mount Etna)</strong>: IDDA<br>
+                Europe's largest active volcano is becoming one of Italy's most exciting wine regions. IDDA is a collaboration between the Gaja and Graci families focusing on Carricante grown on volcanic soils at high elevation.</p>
+            </div>
+        </div> width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('QUINTODECIMO')"></div>
                 <div style="position: absolute; top: 75%; left: 50%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('IDDA')"></div>
             </div>
             
