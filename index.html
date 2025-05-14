@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italian Wine Guide</title>
+    <style>
+        :root {
+            --primary: #8B1F41;
+            --text: #333;
+            --light-text: #777;
+            --bg: #F8F4E3;
+            --white: #FFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--text);
+            background-color: var(--bg);
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        h2 {
+            font-size: 1.3rem;
+            margin: 15px 0 10px;
+            color: var(--primary);
+            border-bottom: 1px solid var(--primary);
+            padding-bottom: 5px;
+        }
+        
+        h3 {
+            font-size: 1.1rem;
+            margin: 15px 0 8px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        .wine-card {
+            background: var(--white);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .wine-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .wine-price {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .wine-meta {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin: 10px 0 3px;
+        }
+        
+        .tabs {
+            display: flex;
+            overflow-x: auto;
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            scrollbar-width: none;
+        }
+        
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            color: var(--white);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .tab.active {
+            background-color: rgba(255,255,255,0.2);
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .map {
+            width: 100%;
+            max-width: 400px;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+        
+        .red {
+            border-left: 4px solid #8B1F41;
+        }
+        
+        .white {
+            border-left: 4px solid #F6F193;
+        }
+        
+        .sparkling {
+            border-left: 4px solid #F4E87D;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Italian Wine Selection</h1>
+        <p>Wine Tasting Guide</p>
+    </header>
+    
+    <div class="tabs">
+        <a href="#summary" class="tab active" onclick="openTab(event, 'summary')">Tasting Order</a>
+        <a href="#sparkling" class="tab" onclick="openTab(event, 'sparkling')">Sparkling</a>
+        <a href="#white" class="tab" onclick="openTab(event, 'white')">White</a>
+        <a href="#red" class="tab" onclick="openTab(event, 'red')">Red</a>
+        <a href="#serving" class="tab" onclick="openTab(event, 'serving')">Serving</a>
+        <a href="#map" class="tab" onclick="openTab(event, 'map')">Map</a>
+    </div>
+    
+    <div class="container">
+        <!-- Summary Tab -->
+        <div id="summary" class="tab-content active">
+            <h2>Tasting Order</h2>
+            
+            <div class="wine-card">
+                <div class="section-title">Flight 1: Sparkling Introduction</div>
+                <p><strong>SANTA LUCIA Franciacorta Brut 2021</strong><br>
+                Begin with this elegant sparkling wine to cleanse the palate</p>
+            </div>
+            
+            <div class="wine-card">
+                <div class="section-title">Flight 2: White Wines (Light to Full)</div>
+                <p><strong>1. IDDA Etna Bianco 2023</strong><br>
+                Start with the mineral-driven Carricante from volcanic soils</p>
+                
+                <p><strong>2. QUINTODECIMO Fiano 2022</strong><br>
+                Move to this elegant and aromatic Campanian white</p>
+                
+                <p><strong>3. QUINTODECIMO GRECO DI TUFO 2022</strong><br>
+                Finish the whites with the most structured and powerful example</p>
+            </div>
+            
+            <div class="wine-card">
+                <div class="section-title">Flight 3: Lighter Reds</div>
+                <p><strong>1. MALVIRA Mombeltramo Riserva 2009</strong><br>
+                Begin reds with this mature Nebbiolo from Roero</p>
+                
+                <p><strong>2. RIVETTO Barbaresco Marcarini 2016</strong><br>
+                Progress to this classic Barbaresco from an excellent vintage</p>
+            </div>
+            
+            <div class="wine-card">
+                <div class="section-title">Flight 4: Fuller-Bodied Reds</div>
+                <p><strong>1. VAL DI SUGA Brunello 2018</strong><br>
+                Experience the classic Brunello expression first</p>
+                
+                <p><strong>2. VAL DI SUGA Brunello Spuntali 2018</strong><br>
+                Finish with the most powerful and complex wine of the tasting</p>
+            </div>
+            
+            <div class="section-title">Why This Order?</div>
+            <p>This progression follows the classic tasting principles of sparkling first, whites before reds, and increasing body and structure throughout each flight. The sequencing showcases each wine in its best light while preparing your palate for the next wine.</p>
+        </div>
+        
+        <!-- Sparkling Tab -->
+        <div id="sparkling" class="tab-content">
+            <h2>Sparkling Wine</h2>
+            
+            <div class="wine-card sparkling">
+                <div class="wine-name">
+                    <h3>SANTA LUCIA Franciacorta Brut 2021</h3>
+                    <span class="wine-price">$35</span>
+                </div>
+                <div class="wine-meta">
+                    Lombardy | 90% Chardonnay, 10% Pinot Bianco
+                </div>
+                
+                <div class="section-title">Tasting Notes</div>
+                <p>Yellow with greenish nuances, fine bubbles. Aromatic floral nose with a soft, slightly savory palate and pleasantly bitter finish.</p>
+                
+                <div class="section-title">Producer</div>
+                <p>Family-owned winery founded in the 1990s with 30 hectares of organically managed vineyards across the Franciacorta region.</p>
+            </div>
+        </div>
+        
+        <!-- White Tab -->
+        <div id="white" class="tab-content">
+            <h2>White Wines</h2>
+            
+            <div class="wine-card white">
+                <div class="wine-name">
+                    <h3>QUINTODECIMO Fiano 2022</h3>
+                    <span class="wine-price">$54</span>
+                </div>
+                <div class="wine-meta">
+                    Campania (Avellino) | 100% Fiano
+                </div>
+                
+                <div class="section-title">Tasting Notes</div>
+                <p>Bright straw yellow. Complex aromas of linden, acacia, thyme, exotic fruits, and candied citrus. Elegant, powerful and balanced with a long mineral finish.</p>
+                
+                <div class="section-title">Producer</div>
+                <p>Established in 2001 by Professor Luigi Moio, who studied enology in Burgundy and specializes in Campanian varieties.</p>
+            </div>
+            
+            <div class="wine-card white">
+                <div class="wine-name">
+                    <h3>QUINTODECIMO GRECO DI TUFO 2022</h3>
+                    <span class="wine-price">$54</span>
+                </div>
+                <div class="wine-meta">
+                    Campania (Tufo) | 100% Greco
+                </div>
+                
+                <div class="section-title">Tasting Notes</div>
+                <p>Golden yellow color reminiscent of Van Gogh's sunflowers. Aromas of quince, melon, apricot, cedar, and herbs. Structured like a red wine with remarkable balance.</p>
+                
+                <div class="section-title">Producer</div>
+                <p>"Giallo d'Arles" references Van Gogh's favorite yellow – fitting as Greco naturally has higher pigmentation than other white grapes.</p>
+            </div>
+            
+            <div class="wine-card white">
+                <div class="wine-name">
+                    <h3>IDDA Etna Bianco 2023</h3>
+                    <span class="wine-price">$69</span>
+                </div>
+                <div class="wine-meta">
+                    Sicily (Mount Etna) | 100% Carricante
+                </div>
+                
+                <div class="section-title">Tasting Notes</div>
+                <p>Bright straw yellow. Pure minerality with citrus, herbs, mint and jasmine. Firm texture with vibrant acidity and a flinty finish.</p>
+                
+                <div class="section-title">Producer</div>
+                <p>A collaboration between the Gaja (Piedmont) and Graci (Sicily) families. "IDDA" means "she" in Sicilian, referring to Mount Etna.</p>
+            </div>
+        </div>
+        
+        <!-- Red Tab -->
+        <div id="red" class="tab-content">
+            <h2>Red Wines</h2>
+            
+            <div class="wine-card red">
+                <div class="wine-name">
+                    <h3>MALVIRA Mombeltramo Riserva 2009</h3>
+                    <span class="wine-price">$50</span>
+                </div>
+                <div class="wine-meta">
+                    Piedmont (Roero) | 100% Nebbiolo
+                </div>
+                
+                <div class="section-title">Tasting Notes</div>
+                <p>Ruby red with orange hues. Complex aromas of black fruit, chocolate, spices, and mint. Powerful with persistent flavors and distinctive spice and licorice notes.</p>
+                
+                <div class="section-title">Producer</div>
+                <p>Established in 1950 by Giuseppe Damonte, now run by his sons. The vineyard was originally owned by their grandmother Margherita.</p>
+            </div>
+            
+            <div class="wine-card red">
+                <div class="wine-name">
+                    <h3>RIVETTO Barbaresco Marcarini 2016</h3>
+                    <span class="wine-price">$69</span>
+                </div>
+                <div class="wine-meta">
+                    Piedmont (Barbaresco) | 100% Nebbiolo
+                </div>
+                
+                <div class="section-title">Tasting Notes</div>
+                <p>Bright garnet red. Classic Nebbiolo aromas of red berries, roses, violets, and leather. Elegant structure with cherry, raspberry, cinnamon and thyme flavors.</p>
+                
+                <div class="section-title">Producer</div>
+                <p>Four generations of winemaking since the late 19th century. Enrico Rivetto pioneered biodynamic viticulture, becoming the first Demeter-certified producer in Barolo/Barbaresco.</p>
+            </div>
+            
+            <div class="wine-card red">
+                <div class="wine-name">
+                    <h3>VAL DI SUGA Brunello 2018</h3>
+                    <span class="wine-price">$71</span>
+                </div>
+                <div class="wine-meta">
+                    Tuscany (Montalcino) | 100% Sangiovese
+                </div>
+                
+                <div class="section-title">Tasting Notes</div>
+                <p>Bright red with ruby highlights. Complex nose of ripe red fruit, orange, and balsamic notes. Well-structured with defined tannins and acidity. Persistent finish.</p>
+                
+                <div class="section-title">Producer</div>
+                <p>Unique for owning vineyards on all three slopes best suited to top-quality Brunello production—northeastern, southeastern, and southwestern.</p>
+            </div>
+            
+            <div class="wine-card red">
+                <div class="wine-name">
+                    <h3>VAL DI SUGA Brunello Spuntali 2018</h3>
+                    <span class="wine-price">$99</span>
+                </div>
+                <div class="wine-meta">
+                    Tuscany (Montalcino - Southwest) | 100% Sangiovese
+                </div>
+                
+                <div class="section-title">Tasting Notes</div>
+                <p>Deep ruby-garnet. Ripe candied fruit, spices, tobacco, herbs, and cocoa. Luxuriant profile with creamy texture and supple tannins, balanced by mineral and iodine notes.</p>
+                
+                <div class="section-title">Vineyard</div>
+                <p>15-hectare vineyard at 300m elevation with sandy, well-draining soils. Strong Mediterranean influence from the nearby Tyrrhenian Sea.</p>
+            </div>
+        </div>
+        
+        <!-- Serving Tab -->
+        <div id="serving" class="tab-content">
+            <h2>Serving Suggestions</h2>
+            
+            <div class="section-title">Temperature</div>
+            <p>Franciacorta: 8-10°C (46-50°F)<br>
+            White wines: 10-12°C (50-54°F)<br>
+            Red wines: 16-18°C (61-64°F)</p>
+            
+            <div class="section-title">Decanting</div>
+            <p>Young whites: 15-30 minutes in glass<br>
+            Aged whites: 15-30 minutes in glass<br>
+            Malvira (2009): 30-60 minutes<br>
+            Barbaresco/Brunello: 1-2 hours</p>
+            
+            <div class="section-title">Food Pairings</div>
+            <p><strong>Franciacorta:</strong> Appetizers, seafood, light pasta<br>
+            <strong>Fiano:</strong> Grilled fish, shellfish, fresh cheese<br>
+            <strong>Greco:</strong> Rich seafood, white meats, aged cheese<br>
+            <strong>Etna Bianco:</strong> Seafood with citrus, herb dishes<br>
+            <strong>Mombeltramo:</strong> Game, roasted meats, aged cheese<br>
+            <strong>Barbaresco:</strong> Truffle dishes, mushroom risotto<br>
+            <strong>Brunello:</strong> Grilled/roasted meats, wild boar<br>
+            <strong>Brunello Spuntali:</strong> Prime beef, game, complex dishes</p>
+        </div>
+        
+        <!-- Map Tab -->
+        <div id="map" class="tab-content">
+            <h2>Wine Regions</h2>
+            
+            <div style="position: relative; width: 100%; max-width: 400px; margin: 0 auto;">
+                <img src="https://i.imgur.com/L2kDRlz.jpg" alt="Map of Italy" class="map">
+                
+                <div style="position: absolute; top: 22%; left: 48%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('SANTA LUCIA')"></div>
+                <div style="position: absolute; top: 27%; left: 35%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('MALVIRA')"></div>
+                <div style="position: absolute; top: 30%; left: 40%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('RIVETTO')"></div>
+                <div style="position: absolute; top: 42%; left: 48%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('VAL DI SUGA')"></div>
+                <div style="position: absolute; top: 56%; left: 60%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('QUINTODECIMO')"></div>
+                <div style="position: absolute; top: 75%; left: 50%; width: 12px; height: 12px; background-color: #8B1F41; border-radius: 50%;" onclick="highlightWine('IDDA')"></div>
+            </div>
+            
+            <div class="wine-card" id="region-info">
+                <div class="section-title">Italy's Wine Regions</div>
+                <p>Click on a point on the map to learn about each region.</p>
+                
+                <div class="section-title">North</div>
+                <p><strong>Lombardy (Franciacorta)</strong>: Santa Lucia<br>
+                <strong>Piedmont (Roero)</strong>: Malvirà<br>
+                <strong>Piedmont (Barbaresco)</strong>: Rivetto</p>
+                
+                <div class="section-title">Central</div>
+                <p><strong>Tuscany (Montalcino)</strong>: Val di Suga</p>
+                
+                <div class="section-title">South</div>
+                <p><strong>Campania (Avellino/Tufo)</strong>: Quintodecimo</p>
+                
+                <div class="section-title">Islands</div>
+                <p><strong>Sicily (Mount Etna)</strong>: IDDA</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Wine Tasting Guide &copy; 2025</p>
+    </footer>
+    
+    <script>
+        function openTab(evt, tabName) {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+            }
+            
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].className = tabs[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+        
+        function highlightWine(producer) {
+            var regionInfo = document.getElementById('region-info');
+            var infoText = '';
+            
+            switch(producer) {
+                case 'SANTA LUCIA':
+                    infoText = `
+                        <div class="section-title">Lombardy: Franciacorta</div>
+                        <p><strong>Santa Lucia</strong> is located in Rovato in the Franciacorta region, Italy's answer to Champagne. This area in Lombardy near Lake Iseo produces some of Italy's finest traditional method sparkling wines.</p>
+                        <p>Their organically managed vineyards benefit from morainic soils that provide excellent drainage and impart distinctive minerality to the wines.</p>
+                    `;
+                    // Auto-open the sparkling tab
+                    document.querySelector('a[href="#sparkling"]').click();
+                    break;
+                    
+                case 'MALVIRA':
+                    infoText = `
+                        <div class="section-title">Piedmont: Roero</div>
+                        <p><strong>Malvirà</strong> is based in Roero, which sits across the Tanaro river from Barolo and Barbaresco. While better known for white wines (Arneis), the region also produces excellent Nebbiolo-based reds.</p>
+                        <p>The soils in Roero contain higher proportions of sand and marine sediments, resulting in more accessible Nebbiolo wines with elegant aromatics compared to the more tannic expressions from neighboring regions.</p>
+                    `;
+                    // Auto-open the red tab
+                    document.querySelector('a[href="#red"]').click();
+                    break;
+                    
+                case 'RIVETTO':
+                    infoText = `
+                        <div class="section-title">Piedmont: Barbaresco</div>
+                        <p><strong>Rivetto</strong> sources grapes from the Marcarini cru in Barbaresco, one of the most prestigious Nebbiolo growing areas in Piedmont.</p>
+                        <p>Barbaresco is known for producing more elegant and approachable Nebbiolo wines compared to neighboring Barolo, though still with remarkable complexity and aging potential. The 2016 vintage is considered exceptional across Piedmont.</p>
+                    `;
+                    // Auto-open the red tab
+                    document.querySelector('a[href="#red"]').click();
+                    break;
+                    
+                case 'VAL DI SUGA':
+                    infoText = `
+                        <div class="section-title">Tuscany: Montalcino</div>
+                        <p><strong>Val di Suga</strong> is located in Montalcino, home to one of Italy's most prestigious wines: Brunello di Montalcino DOCG.</p>
+                        <p>What makes Val di Suga unique is that it's the only producer to own vineyards on the three prime slopes of Montalcino—northeastern, southeastern, and southwestern—each contributing different characteristics to their wines. The Spuntali vineyard on the southwestern slope benefits from Mediterranean influence from the nearby sea.</p>
+                    `;
+                    // Auto-open the red tab
+                    document.querySelector('a[href="#red"]').click();
+                    break;
+                    
+                case 'QUINTODECIMO':
+                    infoText = `
+                        <div class="section-title">Campania: Avellino/Tufo</div>
+                        <p><strong>Quintodecimo</strong> was established by Professor Luigi Moio in Mirabella Eclano, Irpinia. This region in Campania is known for its indigenous white grape varieties, particularly Fiano and Greco.</p>
+                        <p>The cool microclimate and clay-limestone soils at high elevations (450-600m) contribute to the distinctive character of these wines, allowing for both freshness and structure. The Tufo area has been renowned for Greco cultivation since ancient times.</p>
+                    `;
+                    // Auto-open the white tab
+                    document.querySelector('a[href="#white"]').click();
+                    break;
+                    
+                case 'IDDA':
+                    infoText = `
+                        <div class="section-title">Sicily: Mount Etna</div>
+                        <p><strong>IDDA</strong> focuses on the southwestern slope of Mount Etna, Europe's most active volcano. "Idda" means "she" in Sicilian dialect, referring to how locals personify Mount Etna.</p>
+                        <p>The volcanic soils and high elevation (600-800m) create a unique terroir that yields wines with distinctive minerality and freshness despite the southern latitude. Carricante is the primary white grape of the region, known for its high acidity and aging potential.</p>
+                    `;
+                    // Auto-open the white tab
+                    document.querySelector('a[href="#white"]').click();
+                    break;
+                    
+                default:
+                    infoText = `
+                        <div class="section-title">Italy's Wine Regions</div>
+                        <p>Click on a point on the map to learn about each region and producer.</p>
+                        
+                        <div class="section-title">North</div>
+                        <p><strong>Lombardy (Franciacorta)</strong>: Santa Lucia<br>
+                        <strong>Piedmont (Roero)</strong>: Malvirà<br>
+                        <strong>Piedmont (Barbaresco)</strong>: Rivetto</p>
+                        
+                        <div class="section-title">Central</div>
+                        <p><strong>Tuscany (Montalcino)</strong>: Val di Suga</p>
+                        
+                        <div class="section-title">South</div>
+                        <p><strong>Campania (Avellino/Tufo)</strong>: Quintodecimo</p>
+                        
+                        <div class="section-title">Islands</div>
+                        <p><strong>Sicily (Mount Etna)</strong>: IDDA</p>
+                    `;
+            }
+            
+            regionInfo.innerHTML = infoText;
+        }
+        
+        // Handle URL hash on page load
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                var tab = window.location.hash.substring(1);
+                var tabElement = document.getElementById(tab);
+                if (tabElement) {
+                    var event = {
+                        currentTarget: document.querySelector('a[href="#' + tab + '"]')
+                    };
+                    openTab(event, tab);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
